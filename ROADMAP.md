@@ -6,7 +6,7 @@
 ### P1 — ядро собеседования
 | # | Раздел | Подтем | Уровень | Цель |
 |---|---|---|---|---|
-| 1 | [JavaScript](01-javascript/README.md) | 16 | ? | 4 |
+| 1 | [JavaScript](01-javascript/README.md) | 16 | 1 (предв.) | 4 |
 | 2 | [TypeScript](02-typescript/README.md) | 12 | ? | 4 |
 | 3 | [Алгоритмы](03-algorithms/README.md) | 13 | ? | 4 |
 | 4 | [Структуры данных](04-data-structures/README.md) | 9 | ? | 4 |
