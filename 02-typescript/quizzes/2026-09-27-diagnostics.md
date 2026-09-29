@@ -28,3 +28,17 @@ interface — только формы объектов; interface кешируе
 (перебираем ключи K, а не keyof K in T); нет фигурных скобок; `typeof` — оператор уровня значений,
 тип свойства берётся через indexed access `T[P]`.
 **Оценка:** utility types — 1; keyof / typeof / indexed access — 1 (предв.): путает typeof и T[K].
+
+## 4. Типизация getProperty (2026-09-29)
+**Ответ ученика (с подсказкой про K extends keyof T):**
+`type getPropertyType<T, K extends keyof T> = (obj: T, key: K) => T[K]`
+**Разбор:** логика типов верная — ограничение ключа и возвращаемый T[K]. Нюанс: дженерики объявлены на псевдониме типа,
+а не на сигнатуре → при использовании нужно явно указывать `getPropertyType<typeof user, 'age'>`, вывода на каждый
+вызов не будет. Правильно: `function getProperty<T, K extends keyof T>(obj: T, key: K): T[K]`
+или generic call signature `type GetProperty = <T, K extends keyof T>(obj: T, key: K) => T[K]`.
+**Оценка:** дженерики — 3 (с подсказкой); keyof / indexed access — поднят до 2 (применил сразу после разбора).
+
+## Итог диагностики TS
+Уровень раздела (предварительно): **2**. Сильно: any / unknown / never. Слабо: utility types и их реализация,
+технические отличия interface / type (declaration merging), typeof vs T[K].
+Быстро применяет новое после разбора.
