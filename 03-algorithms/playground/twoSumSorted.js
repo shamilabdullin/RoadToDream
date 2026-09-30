@@ -3,7 +3,20 @@
 // Ограничение: O(n) по времени и O(1) по памяти — без Map и Set.
 
 function twoSumSorted(nums, target) {
-  // твой код
+  let rightIndex = nums.length - 1
+
+  for (let i = 0; i < nums.length; i++) {
+    let left = nums[i]
+    let right = nums [rightIndex]
+    
+    while (left + right > target) {
+      if (left + right === target) return [i, rightIndex]
+      rightIndex = rightIndex - 1
+      if (left === right) return null
+    }
+
+  }
+  return null
 }
 
 // ---------- Тесты ----------
