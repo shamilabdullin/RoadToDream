@@ -3,19 +3,16 @@
 // Ограничение: O(n) по времени и O(1) по памяти — без Map и Set.
 
 function twoSumSorted(nums, target) {
-  let rightIndex = nums.length - 1
-
-  for (let i = 0; i < nums.length; i++) {
-    let left = nums[i]
-    let right = nums [rightIndex]
+  let left = 0
+  let right = nums.length - 1
     
-    while (left + right > target) {
-      if (left + right === target) return [i, rightIndex]
-      rightIndex = rightIndex - 1
-      if (left === right) return null
-    }
-
+  while (left < right) {
+    const sum = nums[left] + nums[right]
+    if (sum === target) return [left, right]
+    else if (sum > target) right = right - 1
+    else left = left + 1
   }
+
   return null
 }
 
