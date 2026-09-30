@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Playground — алгоритмы</title>
+  <style>
+    body { font: 15px/1.5 system-ui, sans-serif; margin: 24px; background: #1e1e1e; color: #ddd; }
+    h1 { font-size: 18px; margin: 0 0 4px; }
+    p { margin: 0 0 16px; color: #999; }
+    #output { font: 14px/1.6 Consolas, monospace; background: #111; padding: 16px; border-radius: 8px; white-space: pre-wrap; }
+    .error { color: #ff6b6b; }
+  </style>
+</head>
+<body>
+  <h1>Playground</h1>
+  <p>Вывод console.log дублируется сюда и в консоль браузера (F12). После правки JS-файла обнови страницу (F5).</p>
+  <pre id="output"></pre>
+
+  <script>
+    // Дублируем console.log и ошибки на страницу
+    const out = document.getElementById('output');
+    const print = (text, cls) => {
+      const line = document.createElement('div');
+      if (cls) line.className = cls;
+      line.textContent = text;
+      out.appendChild(line);
+    };
+    const format = (a) => (typeof a === 'object' ? JSON.stringify(a) : String(a));
+    const originalLog = console.log;
+    console.log = (...args) => {
+      originalLog(...args);
+      print(args.map(format).join(' '));
+    };
+    window.addEventListener('error', (e) => print(`Ошибка: ${e.message} (строка ${e.lineno})`, 'error'));
+  </script>
+  <!-- Подключи сюда нужный файл -->
+  <script src="twoSumSorted.js"></script>
+</body>
+</html>
