@@ -8,7 +8,7 @@
 | # | Приоритет | Подтема | Уровень | Последняя проверка | Заметки |
 |---|---|---|---|---|---|
 | 1 | P1 | Реактивность Vue 3: ref, reactive, Proxy; Composition API vs Options API | 1 | 2026-09-30 | Не знал механизм; объяснены Proxy track/trigger, ref vs reactive, отличие от Vue 2 — проверить повторно |
-| 2 | P1 | Компоненты: props, emits, slots, v-model | ? | — | |
+| 2 | P1 | Компоненты: props, emits, slots, v-model | 1 | 2026-10-01 | v-model на input понимает; emits не знал (думал — watcher). См. theory/react-to-vue.md |
 | 3 | P1 | computed vs watch / watchEffect | ? | — | |
 | 4 | P1 | Жизненный цикл компонента | ? | — | |
 | 5 | P2 | Шаблоны и директивы: v-if / v-show, v-for и key | ? | — | |
