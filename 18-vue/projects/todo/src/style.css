@@ -1,0 +1,17 @@
+/* Глобальные стили (не scoped) — подключены в main.ts */
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1c1d21;
+  --muted: #8a8f98;
+  --border: #e4e6ea;
+  --accent: #42b883; /* фирменный зелёный Vue */
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+}
