@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Скобки — isValid</title>
+  <style>
+    body { font: 15px/1.5 system-ui, sans-serif; margin: 24px; background: #1e1e1e; color: #ddd; max-width: 900px; }
+    h1 { font-size: 18px; margin: 0 0 4px; }
+    p { margin: 0 0 16px; color: #999; }
+    code, .mono { font-family: Consolas, Menlo, monospace; }
+    #summary { font-size: 16px; font-weight: 600; margin: 16px 0 8px; }
+    .pass { color: #6bd68b; } .fail { color: #ff6b6b; }
+    table { border-collapse: collapse; width: 100%; background: #111; border-radius: 8px; overflow: hidden; }
+    td, th { padding: 6px 12px; text-align: left; border-bottom: 1px solid #2a2a2a; }
+    th { color: #888; font-weight: 500; }
+    .note { color: #888; }
+    .try { margin: 24px 0 8px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    input { font: 16px Consolas, Menlo, monospace; padding: 6px 10px; background: #111; color: #ddd; border: 1px solid #444; border-radius: 6px; width: 260px; }
+    #tryResult { font-weight: 600; }
+    .error { color: #ff6b6b; white-space: pre-wrap; background: #2a1414; padding: 12px; border-radius: 8px; }
+    #log { font: 13px/1.6 Consolas, Menlo, monospace; background: #111; padding: 12px; border-radius: 8px; white-space: pre-wrap; min-height: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Правильная скобочная последовательность</h1>
+  <p>Пиши код в <code>solution.js</code>, после сохранения обнови страницу (F5). Условие — в README.md.</p>
+
+  <div id="errors"></div>
+  <div id="summary"></div>
+  <table>
+    <thead><tr><th></th><th>Строка</th><th>Ожидалось</th><th>Получено</th><th>Комментарий</th></tr></thead>
+    <tbody id="results"></tbody>
+  </table>
+
+  <div class="try">
+    Проверить свою строку:
+    <input id="tryInput" placeholder="например, {[()]}" autocomplete="off">
+    <span id="tryResult"></span>
+  </div>
+
+  <p style="margin: 16px 0 4px">console.log из solution.js (удобно, чтобы смотреть, как меняется стек):</p>
+  <div id="log"></div>
+
+  <script>
+    // Перехватываем console.log и ошибки, чтобы видеть их на странице
+    const logEl = document.getElementById('log');
+    const fmt = (a) => (typeof a === 'object' ? JSON.stringify(a) : String(a));
+    const originalLog = console.log;
+    console.log = (...args) => {
+      originalLog(...args);
+      if (logEl.childElementCount < 300) {
+        const line = document.createElement('div');
+        line.textContent = args.map(fmt).join(' ');
+        logEl.appendChild(line);
+      }
+    };
+    window.addEventListener('error', (e) => {
+      const div = document.createElement('div');
+      div.className = 'error';
+      div.textContent = `Ошибка: ${e.message} (${(e.filename || '').split('/').pop()}, строка ${e.lineno})`;
+      document.getElementById('errors').appendChild(div);
+    });
+  </script>
+  <script src="cases.js"></script>
+  <script src="solution.js"></script>
+  <script>
+    const short = (s) => (s.length > 24 ? `${s.slice(0, 24)}… (${s.length})` : s === '' ? '(пустая строка)' : s);
+    const run = (s) => {
+      try { return { value: isValid(s) }; } catch (e) { return { error: e.message }; }
+    };
+
+    if (typeof isValid === 'function') {
+      const tbody = document.getElementById('results');
+      let passed = 0;
+      for (const { s, expected, note } of CASES) {
+        // длинные строки не логируем, чтобы не забивать вывод
+        const log = console.log;
+        if (s.length > 50) console.log = () => {};
+        const res = run(s);
+        console.log = log;
+
+        const ok = res.value === expected;
+        if (ok) passed++;
+        const tr = document.createElement('tr');
+        const cells = [
+          ok ? '✅' : '❌',
+          short(s),
+          String(expected),
+          res.error ? `ошибка: ${res.error}` : String(res.value),
+          note || '',
+        ];
+        cells.forEach((text, i) => {
+          const td = document.createElement('td');
+          td.textContent = text;
+          if (i === 1) td.className = 'mono';
+          if (i === 3) td.className = ok ? 'pass' : 'fail';
+          if (i === 4) td.className = 'note';
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      }
+      const summary = document.getElementById('summary');
+      summary.textContent = `Пройдено ${passed} из ${CASES.length}` + (passed === CASES.length ? ' — готово, зови на ревью 🎉' : '');
+      summary.className = passed === CASES.length ? 'pass' : 'fail';
+
+      const input = document.getElementById('tryInput');
+      const tryResult = document.getElementById('tryResult');
+      input.addEventListener('input', () => {
+        if (input.value === '') { tryResult.textContent = ''; return; }
+        logEl.textContent = '';
+        const res = run(input.value);
+        tryResult.textContent = res.error ? `ошибка: ${res.error}` : `→ ${res.value}`;
+        tryResult.className = res.error ? 'fail' : '';
+      });
+    }
+  </script>
+</body>
+</html>
