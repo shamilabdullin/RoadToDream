@@ -30,9 +30,9 @@
 ### С IT-офисом в Казани (офис / гибрид)
 | Компания | Где смотреть вакансии | Офис в Казани |
 |---|---|---|
-| **Сбер** | [IT в Казани](https://developers.sber.ru/kak-v-sbere/locations/kazan) | Технохаб в IT-парке им. Рамеева, 300+ человек, акцент на фронтенд |
+| **Сбер** | [rabota.sber.ru — поиск вакансий](https://rabota.sber.ru/search/) (город — Казань) · [об IT-офисе в Казани](https://developers.sber.ru/kak-v-sbere/locations/kazan) | Технохаб в IT-парке им. Рамеева, 300+ человек, акцент на фронтенд |
 | **Т-Банк** | [tbank.ru/career/vacancies/it](https://www.tbank.ru/career/vacancies/it/) | Островского, 98 и Спартаковская, 6. Фронтенд в основном Angular |
-| **Ozon Tech** | [career.ozon.ru/it](https://career.ozon.ru/it/) | Адоратского, 2Б + Иннополис |
+| **Ozon Tech** | [job.ozon.ru/it](https://job.ozon.ru/it/) | Адоратского, 2Б + Иннополис. Во фронтенде много **Vue** / TS — была вакансия Senior Frontend (Vue) в Казани |
 | **Яндекс** | [Вакансии в Казани](https://yandex.ru/jobs/vacancies/city_kazan) · [в Иннополисе](https://yandex.ru/jobs/vacancies/city_innopolis) | Спартаковская, 6 + «Палладиум» в Иннополисе. Фронтенд в Казани появляется редко — следить |
 | **Т1** (IT-холдинг) | [career.t1.ru — Казань](https://career.t1.ru/vacancies/kazan/razrabotchik) | Есть IT-центр, гибридный формат; нанимают и фронтенд |
 | **Авито** | [career.avito.com](https://career.avito.com/vacancies/razrabotka/) | Офис в центре (Кремлёвская плаза), но IT-мест мало — скорее удалёнка |
