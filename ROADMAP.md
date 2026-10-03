@@ -11,7 +11,7 @@
 | 3 | [Алгоритмы](03-algorithms/README.md) | 13 | 2 (предв.) | 4 |
 | 4 | [Структуры данных](04-data-structures/README.md) | 9 | 2 (предв.) | 4 |
 | 5 | [Браузер и сеть](05-browser-and-network/README.md) | 12 | ? | 4 |
-| 6 | [React](06-react/README.md) | 15 | ? | 4 |
+| 6 | [React](06-react/README.md) | 15 | ? (диагностика в процессе) | 4 |
 | 7 | [Софт-скиллы и собеседование](07-soft-skills-and-interview/README.md) | 6 | ? | 4 |
 
 ### P2 — уровень middle+
